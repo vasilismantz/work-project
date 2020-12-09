@@ -1,0 +1,22 @@
+{
+  "name": "work-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev:api": "yarn workspace @work-project/api dev",
+    "dev:www": "yarn workspace @work-project/www dev",
+    "build": "lerna run build",
+    "lint": "lerna run lint",
+    "format": "lerna run format"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
