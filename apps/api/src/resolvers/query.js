@@ -10,4 +10,6 @@ export default {
   users: (_, __, ctx) => ctx.models.User.find({}),
   category: (_, { id }, ctx) => ctx.models.Category.findOne({ _id: id }),
   categories: (_, __, ctx) => ctx.models.Category.find({}),
+  task: (_, { id }, ctx) => ctx.models.Task.findOne({ _id: id }),
+  tasks: (_, __, ctx) => ctx.models.Task.find({}),
 };

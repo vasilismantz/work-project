@@ -15,3 +15,11 @@ export const categoryFields = gql`
     color
   }
 `;
+
+export const taskFields = gql`
+  fragment taskFields on Task {
+    id
+    name
+    date
+  }
+`;

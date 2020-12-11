@@ -16,9 +16,21 @@ export default gql`
     name: String!
     color: String!
   }
-  
+
   input UpdateCategoryInput {
     name: String
     color: String
+  }
+
+  input AddTaskInput {
+    name: String!
+    date: DateTime!
+    categoryId: ID!
+  }
+
+  input UpdateTaskInput {
+    name: String
+    date: DateTime
+    categoryId: ID
   }
 `;
