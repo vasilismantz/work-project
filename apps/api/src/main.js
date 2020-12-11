@@ -6,7 +6,14 @@ import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import playground from "./playground";
 import connect from "./lib/mongoose";
-import { User, Category, userLoader, categoryLoader } from "./models";
+import {
+  User,
+  Category,
+  userLoader,
+  categoryLoader,
+  Task,
+  taskLoader,
+} from "./models";
 
 (async () => {
   await connect();
@@ -36,8 +43,8 @@ const server = new ApolloServer({
 
     return {
       user,
-      models: { User, Category },
-      loaders: { userLoader, categoryLoader },
+      models: { User, Category, Task },
+      loaders: { userLoader, categoryLoader, taskLoader },
       req,
       res,
     };

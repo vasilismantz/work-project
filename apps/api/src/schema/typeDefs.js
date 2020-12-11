@@ -18,6 +18,16 @@ export default gql`
     updatedAt: DateTime!
   }
 
+  type Task implements Node {
+    id: ID!
+    name: String!
+    date: DateTime!
+    user: User!
+    category: Category!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+  }
+
   type AuthPayload {
     token: String!
     me: User!
@@ -29,6 +39,8 @@ export default gql`
     users: [User!]!
     category(id: ID!): Category!
     categories: [Category!]!
+    task(id: ID!): Task!
+    tasks: [Task!]!
   }
 
   type Mutation {
@@ -37,5 +49,8 @@ export default gql`
     addCategory(input: AddCategoryInput!): Category!
     updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
     removeCategory(id: ID!): Category!
+    addTask(input: AddTaskInput!): Task!
+    updateTask(id: ID!, input: UpdateTaskInput!): Task!
+    removeTask(id: ID!): Task!
   }
 `;
