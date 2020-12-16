@@ -21,7 +21,7 @@ export default {
     const task = await ctx.models.Task.findOne({ _id: args.id });
 
     if (!task) {
-      throw new AuthenticationError("Task not found.");
+      throw new Error("Task not found.");
     }
 
     // TO DO
@@ -39,7 +39,7 @@ export default {
     const task = await ctx.models.Task.findOne({ _id: id });
 
     if (!task) {
-      throw new AuthenticationError("Task not found.");
+      throw new Error("Task not found.");
     }
 
     // TO DO

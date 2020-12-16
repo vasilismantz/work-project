@@ -20,7 +20,7 @@ export default {
     const category = await ctx.models.Category.findOne({ _id: args.id });
 
     if (!category) {
-      throw new AuthenticationError("Category not found.");
+      throw new Error("Category not found.");
     }
 
     // TO DO
@@ -38,7 +38,7 @@ export default {
     const category = await ctx.models.Category.findOne({ _id: id });
 
     if (!category) {
-      throw new AuthenticationError("Category not found.");
+      throw new Error("Category not found.");
     }
 
     // TO DO
