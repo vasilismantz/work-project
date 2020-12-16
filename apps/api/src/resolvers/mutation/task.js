@@ -1,7 +1,9 @@
+import { AuthenticationError } from "apollo-server";
+
 export default {
   addTask: async (_, args, ctx) => {
     if (!ctx.user) {
-      throw new Error("User not found.");
+      throw new AuthenticationError("You are not logged in.");
     }
 
     return ctx.models.Task.create({
@@ -13,7 +15,7 @@ export default {
   },
   updateTask: async (_, args, ctx) => {
     if (!ctx.user) {
-      throw new Error("User not found.");
+      throw new AuthenticationError("You are not logged in.");
     }
 
     const task = await ctx.models.Task.findOne({ _id: args.id });
@@ -31,7 +33,7 @@ export default {
   },
   removeTask: async (_, { id }, ctx) => {
     if (!ctx.user) {
-      throw new Error("Task not found.");
+      throw new AuthenticationError("You are not logged in.");
     }
 
     const task = await ctx.models.Task.findOne({ _id: id });

@@ -1,7 +1,9 @@
+import { AuthenticationError } from "apollo-server";
+
 export default {
   addCategory: async (_, args, ctx) => {
     if (!ctx.user) {
-      throw new Error("User not found.");
+      throw new AuthenticationError("You are not logged in.");
     }
 
     return ctx.models.Category.create({
@@ -12,7 +14,7 @@ export default {
   },
   updateCategory: async (_, args, ctx) => {
     if (!ctx.user) {
-      throw new Error("User not found.");
+      throw new AuthenticationError("You are not logged in.");
     }
 
     const category = await ctx.models.Category.findOne({ _id: args.id });
@@ -30,7 +32,7 @@ export default {
   },
   removeCategory: async (_, { id }, ctx) => {
     if (!ctx.user) {
-      throw new Error("User not found.");
+      throw new AuthenticationError("You are not logged in.");
     }
 
     const category = await ctx.models.Category.findOne({ _id: id });
