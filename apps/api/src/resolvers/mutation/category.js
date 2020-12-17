@@ -1,4 +1,5 @@
 import { AuthenticationError } from "apollo-server";
+import { compareUserIds } from "../../utils";
 
 export default {
   addCategory: async (_, args, ctx) => {
@@ -23,8 +24,7 @@ export default {
       throw new Error("Category not found.");
     }
 
-    // TO DO
-    // check if category belongs to user
+    compareUserIds(category.user, ctx.user.id);
 
     await ctx.models.Category.updateOne({ _id: category.id }, args.input);
 
@@ -41,8 +41,7 @@ export default {
       throw new Error("Category not found.");
     }
 
-    // TO DO
-    // check if category belongs to user
+    compareUserIds(category.user, ctx.user.id);
 
     await ctx.models.Category.deleteOne({ _id: category.id });
 
