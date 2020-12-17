@@ -1,4 +1,5 @@
 import { AuthenticationError } from "apollo-server";
+import { compareUserIds } from "../../utils";
 
 export default {
   addTask: async (_, args, ctx) => {
@@ -24,8 +25,7 @@ export default {
       throw new Error("Task not found.");
     }
 
-    // TO DO
-    // check if task belongs to user
+    compareUserIds(task.user, ctx.user.id);
 
     await ctx.models.Task.updateOne({ _id: task.id }, args.input);
 
@@ -42,8 +42,7 @@ export default {
       throw new Error("Task not found.");
     }
 
-    // TO DO
-    // check if task belongs to user
+    compareUserIds(task.user, ctx.user.id);
 
     await ctx.models.Task.deleteOne({ _id: task.id });
 

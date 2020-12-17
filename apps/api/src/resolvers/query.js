@@ -1,4 +1,7 @@
 import { AuthenticationError } from "apollo-server";
+import { compare } from "bcryptjs";
+import { check } from "prettier";
+import { compareUserIds } from "../utils";
 
 export default {
   me: (_, __, ctx) => {
@@ -20,33 +23,46 @@ export default {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    return ctx.models.User.find({});
+    return ctx.models.User.find({ user: ctx.user.id });
   },
-  category: (_, { id }, ctx) => {
+  category: async (_, { id }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
-    ctx.models.Category.findOne({ _id: id });
+
+    const category = await ctx.models.Category.findOne({ _id: id });
+
+    if (category) {
+      compareUserIds(category.user, ctx.user.id);
+    }
+
+    return category;
   },
   categories: (_, __, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    return ctx.models.Category.find({});
+    return ctx.models.Category.find({ user: ctx.user.id });
   },
-  task: (_, { id }, ctx) => {
+  task: async (_, { id }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    return ctx.models.Task.findOne({ _id: id });
+    const task = await ctx.models.Task.findOne({ _id: id });
+
+    if (task) {
+      compareUserIds(task.user, ctx.user.id);
+    }
+
+    return task;
   },
   tasks: (_, __, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    return ctx.models.Task.find({});
+    return ctx.models.Task.find({ user: ctx.user.id });
   },
 };
