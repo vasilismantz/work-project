@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "build": {
+      "env": {
+        "BUILD_FOR_VERCEL": "true"
+      }
+    },
+    "builds": [
+      { "src": "apps/www/package.json", "use": "@vercel/next" },
+      {
+        "src": "apps/api/src/index.js",
+        "use": "@vercel/node",
+        "config": { "maxLambdaSize": "40mb" }
+      }
+    ],
+    "rewrites": [
+      { "source": "/api(.*)", "destination": "apps/api/src/index.js" },
+      { "source": "(.*)", "destination": "apps/www$1" }
+    ]
+  }
