@@ -1,7 +1,31 @@
 import { Grid } from "@material-ui/core";
-import { SigninForm } from "@/components";
+import { LoginForm } from "@/components";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "@work-project/graphql";
+import { useSnackbar } from "notistack";
+import { isLoggedInVar } from "@/lib/graphql/cache";
 
 const Login = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  const [login, { loading }] = useMutation(LOGIN, {
+    onCompleted: ({ login }) => {
+      localStorage.setItem("token", login.token);
+      localStorage.setItem("userId", login.me.id);
+      isLoggedInVar(true);
+    },
+    onError: error => enqueueSnackbar(error.message, { variant: "error" }),
+  });
+
+  const handleSubmit = ({ email, password }) =>
+    login({
+      variables: {
+        loginUserInput: {
+          email,
+          password,
+        },
+      },
+    });
+
   return (
     <div>
       <Grid container style={{ minHeight: "100vh" }}>
@@ -23,7 +47,7 @@ const Login = () => {
           style={{ padding: "10" }}
         >
           <div />
-          <SigninForm />
+          <LoginForm pending={loading} onSubmit={handleSubmit} />
           <div />
         </Grid>
       </Grid>
