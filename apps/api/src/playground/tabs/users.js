@@ -1,10 +1,17 @@
 import { print } from "graphql";
 import { gql } from "apollo-server";
-import { LOGIN, REGISTER, GET_USER, GET_USERS } from "@work-project/graphql";
+import {
+  LOGIN,
+  REGISTER,
+  GET_ME,
+  GET_USER,
+  GET_USERS,
+} from "@work-project/graphql";
 
 const query = gql`
   ${LOGIN}
   ${REGISTER}
+  ${GET_ME}
   ${GET_USER}
   ${GET_USERS}
 `;
