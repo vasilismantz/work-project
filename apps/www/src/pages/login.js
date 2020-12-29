@@ -1,17 +1,22 @@
 import { Grid } from "@material-ui/core";
 import { LoginForm } from "@/components";
 import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
 import { LOGIN } from "@work-project/graphql";
 import { useSnackbar } from "notistack";
 import { isLoggedInVar } from "@/lib/graphql/cache";
 
 const Login = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const router = useRouter();
   const [login, { loading }] = useMutation(LOGIN, {
     onCompleted: ({ login }) => {
       localStorage.setItem("token", login.token);
       localStorage.setItem("userId", login.me.id);
       isLoggedInVar(true);
+      router.push({
+        pathname: "/",
+      });
     },
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
   });

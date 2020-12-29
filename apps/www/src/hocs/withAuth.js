@@ -18,7 +18,6 @@ const withAuth = Component => props => {
       isLoggedInVar(false);
       router.push({
         pathname: "/login",
-        query: { redirect: router.asPath },
       });
     },
   });
