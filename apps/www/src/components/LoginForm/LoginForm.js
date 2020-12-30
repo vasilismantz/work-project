@@ -1,7 +1,15 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { isEmpty, map } from "lodash";
-import { Grid, TextField, Button, InputAdornment } from "@material-ui/core";
+import Link from "next/link";
+import {
+  Grid,
+  TextField,
+  Button,
+  InputAdornment,
+  Box,
+  Typography,
+} from "@material-ui/core";
 import { Email, LockRounded } from "@material-ui/icons";
 
 const LoginForm = ({ pending, onSubmit }) => {
@@ -67,6 +75,11 @@ const LoginForm = ({ pending, onSubmit }) => {
           Log in
         </Button>
       </div>
+      <Box mt={2}>
+        <Typography variant="body2" align="center">
+          Don't have an account? <Link href="/register"> Register </Link>
+        </Typography>
+      </Box>
     </form>
   );
 };
