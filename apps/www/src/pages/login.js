@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { LOGIN } from "@work-project/graphql";
 import { useSnackbar } from "notistack";
 import { isLoggedInVar } from "@/lib/graphql/cache";
+import { withoutAuth } from "@/hocs";
 
 const Login = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -14,9 +15,6 @@ const Login = () => {
       localStorage.setItem("token", login.token);
       localStorage.setItem("userId", login.me.id);
       isLoggedInVar(true);
-      router.push({
-        pathname: "/",
-      });
     },
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
   });
@@ -60,4 +58,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withoutAuth(Login);
