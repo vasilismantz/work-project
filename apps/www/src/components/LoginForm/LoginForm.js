@@ -2,7 +2,7 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { isEmpty, map } from "lodash";
 import { Grid, TextField, Button, InputAdornment } from "@material-ui/core";
-import { AccountCircle, LockRounded } from "@material-ui/icons";
+import { Email, LockRounded } from "@material-ui/icons";
 
 const LoginForm = ({ pending, onSubmit }) => {
   const {
@@ -37,7 +37,7 @@ const LoginForm = ({ pending, onSubmit }) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <AccountCircle />
+                <Email />
               </InputAdornment>
             ),
           }}
