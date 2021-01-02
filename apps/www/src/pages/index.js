@@ -1,6 +1,8 @@
 import React from "react";
 import { withAuth } from "@/hocs";
 
-const Home = () => <div>Todo List</div>;
+const Home = () => {
+  return <h1>Logged In</h1>;
+};
 
 export default withAuth(Home);
