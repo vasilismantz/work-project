@@ -17,7 +17,7 @@ const withAuth = Component => props => {
       localStorage.clear();
       isLoggedInVar(false);
       router.push({
-        pathname: "/login",
+        pathname: "/landingPage",
       });
     },
   });
