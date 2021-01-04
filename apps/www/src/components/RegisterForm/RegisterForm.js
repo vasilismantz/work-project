@@ -1,15 +1,8 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import Link from "next/link";
-import { isEmpty, map } from "lodash";
-import {
-  Grid,
-  TextField,
-  Button,
-  InputAdornment,
-  Box,
-  Typography,
-} from "@material-ui/core";
+import { ClearAll } from "@material-ui/icons";
+import { Grid, TextField, Button, InputAdornment } from "@material-ui/core";
 import { AccountCircle, Email, LockRounded } from "@material-ui/icons";
 
 const RegisterForm = ({ pending, onSubmit }) => {
@@ -25,16 +18,14 @@ const RegisterForm = ({ pending, onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          maxWidth: 350,
-          minWidth: 250,
-        }}
-      >
-        <Grid container justify="center">
-          <img src="/todo-logo.png" width="100" alt="Logo" />
+      <div className="login_page__form_content">
+        <Grid container justify="left">
+          <Link href="/">
+            <a className="form-logo">
+              <ClearAll className="navbar-icon" />
+              Todo List
+            </a>
+          </Link>
         </Grid>
         <Controller
           control={control}
@@ -90,12 +81,8 @@ const RegisterForm = ({ pending, onSubmit }) => {
         >
           Register
         </Button>
+        <hr />
       </div>
-      {/* <Box mt={2}>
-        <Typography variant="body2" align="center">
-          Already have an account? <Link href="/login"> Log in </Link>
-        </Typography>
-      </Box> */}
     </form>
   );
 };
