@@ -61,7 +61,31 @@ function Navbar() {
               {button ? (
                 <Link href="/register">
                   <a className="btn-link">
-                    <Button buttonStyle="btn--outline">Sign up</Button>
+                    <Button buttonStyle="btn--outline" buttonColor="red">
+                      Sign up
+                    </Button>
+                  </a>
+                </Link>
+              ) : (
+                <Link href="/register">
+                  <a className="btn-link" onClick={closeMobileMenu}>
+                    <Button
+                      buttonStyle="btn--outline"
+                      buttonColor="red"
+                      buttonSize="btn--mobile"
+                      href="/register"
+                    >
+                      Sign up
+                    </Button>
+                  </a>
+                </Link>
+              )}
+            </li>
+            <li className="nav-btn">
+              {button ? (
+                <Link href="/login">
+                  <a className="btn-link">
+                    <Button buttonStyle="btn--outline">Log in</Button>
                   </a>
                 </Link>
               ) : (
@@ -70,9 +94,9 @@ function Navbar() {
                     <Button
                       buttonStyle="btn--outline"
                       buttonSize="btn--mobile"
-                      href="/register"
+                      href="/login"
                     >
-                      Sign up
+                      Log in
                     </Button>
                   </a>
                 </Link>
