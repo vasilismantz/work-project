@@ -75,11 +75,11 @@ const LoginForm = ({ pending, onSubmit }) => {
           Log in
         </Button>
       </div>
-      <Box mt={2}>
+      {/* <Box mt={2}>
         <Typography variant="body2" align="center">
           Don't have an account? <Link href="/register"> Register </Link>
         </Typography>
-      </Box>
+      </Box> */}
     </form>
   );
 };

@@ -91,11 +91,11 @@ const RegisterForm = ({ pending, onSubmit }) => {
           Register
         </Button>
       </div>
-      <Box mt={2}>
+      {/* <Box mt={2}>
         <Typography variant="body2" align="center">
           Already have an account? <Link href="/login"> Log in </Link>
         </Typography>
-      </Box>
+      </Box> */}
     </form>
   );
 };
