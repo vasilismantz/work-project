@@ -35,7 +35,7 @@ const Login = () => {
         <div className="logn_page__logo"></div>
         <div className="login_page__content">
           <div className="login_page__form">
-            <LoginForm />
+            <LoginForm pending={loading} onSubmit={handleSubmit} />
           </div>
           <div className="login_page__help_block">
             <p>
