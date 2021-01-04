@@ -1,13 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 :root {
   --primary: #fff;
+}
+
+body {
+  height: 100%;
+  background-color: #fafafa;
 }
 
 .btn {
@@ -155,6 +161,19 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
+}
+
+.form-logo {
+  color: #333;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.7rem;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.form-logo:visited {
+  color: #333;
 }
 
 .navbar-icon {
@@ -532,4 +551,55 @@ img {
   .social-media-wrap {
     flex-direction: column;
   }
+}
+
+.login_page {
+  display: flex;
+  justify-content: center;
+  line-height: 20px;
+  color: #333;
+}
+
+.login_page__frame {
+  margin: 50px 0;
+  border-radius: 8px;
+  border: solid 1px #dbdbdb;
+  padding: 25px;
+  background-color: white;
+  max-width: 450px;
+  width: 85%;
+}
+
+.login_page__form_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.login_page__help_block {
+  text-align: center;
+  display: block;
+}
+
+.login_page__help_block > p {
+  font-size: 13px;
+}
+
+.login_page__help_block > p > a {
+  text-decoration: none;
+  color: #276afb;
+}
+
+.login_page__help_block > p > a:visited {
+  text-decoration: none;
+  color: #276afb;
+}
+
+hr {
+  margin-top: 1.7em;
+  margin-bottom: 1.3em;
+  padding: 0;
+  border: 0;
+  color: #ddd;
+  background-color: #ddd;
+  height: 1px;
 }

@@ -1,5 +1,5 @@
-import { Grid } from "@material-ui/core";
 import { LoginForm } from "@/components";
+import Link from "next/link";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { LOGIN } from "@work-project/graphql";
@@ -30,31 +30,24 @@ const Login = () => {
     });
 
   return (
-    <div>
-      <Grid container style={{ minHeight: "100vh" }}>
-        <Grid item xs={12} sm={6}>
-          <img
-            src="https://clickup.com/blog/wp-content/uploads/2019/01/to-do-list-apps-1400x1050.png"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            alt="logo"
-          />
-        </Grid>
-        <Grid
-          container
-          item
-          xs={12}
-          sm={6}
-          alignItems="center"
-          direction="column"
-          justify="space-between"
-          style={{ padding: "10" }}
-        >
-          <div />
-          <LoginForm pending={loading} onSubmit={handleSubmit} />
-          <div />
-        </Grid>
-      </Grid>
-    </div>
+    <main class="login_page">
+      <div className="login_page__frame">
+        <div className="logn_page__logo"></div>
+        <div className="login_page__content">
+          <div className="login_page__form">
+            <LoginForm pending={loading} onSubmit={handleSubmit} />
+          </div>
+          <div className="login_page__help_block">
+            <p>
+              Don't have an account?{" "}
+              <Link href="/register">
+                <a>Sign up</a>
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 
