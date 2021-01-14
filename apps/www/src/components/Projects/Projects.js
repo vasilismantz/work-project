@@ -8,6 +8,8 @@ import { useSnackbar } from "notistack";
 const Projects = () => {
   const { enqueueSnackbar } = useSnackbar();
 
+  const [showConfirm, setShowConfirm] = useState(false);
+
   const { data, loading, error, refetch } = useQuery(GET_CATEGORIES, {
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
   });
@@ -35,12 +37,33 @@ const Projects = () => {
         <li key={project.id} className="sidebar__project">
           <span className="sidebar__dot">•</span>
           <span className="sidebar__project-name">{project.name}</span>
-          {/* Add onClick function */}
           <span
             className="sidebar__project-delete"
-            onClick={() => handleRemoveProject(project.id)}
+            onClick={() => setShowConfirm(!showConfirm)}
           >
             <Delete />
+            {showConfirm && (
+              <div className="project-delete-modal">
+                <div className="project-delete-modal__inner">
+                  <p>Are you sure you want to delete this project?</p>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveProject(project.id)}
+                  >
+                    Delete
+                  </button>
+                  <span
+                    tabIndex={0}
+                    role="button"
+                    onClick={() => {
+                      setShowConfirm(!showConfirm);
+                    }}
+                  >
+                    Cancel
+                  </span>
+                </div>
+              </div>
+            )}
           </span>
         </li>
       );
