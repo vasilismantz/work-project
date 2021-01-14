@@ -1,8 +1,15 @@
 import React from "react";
 import { withAuth } from "@/hocs";
+import { NavbarApp } from "@/components";
+import { Content } from "@/components";
 
 const Home = () => {
-  return <h1>Logged In</h1>;
+  return (
+    <>
+      <NavbarApp />
+      <Content />
+    </>
+  );
 };
 
 export default withAuth(Home);
