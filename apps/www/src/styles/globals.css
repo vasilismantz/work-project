@@ -864,3 +864,24 @@ header {
   margin: 5px 10px;
   font-weight: normal;
 }
+
+.content {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+  max-width: 922px;
+  margin: auto;
+}
+
+.tasks {
+  width: 656px;
+  background-color: white;
+  margin-left: 266px;
+  border-right: 1px solid #f1f1f1;
+  min-height: calc(100vh);
+  vertical-align: top;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 80px;
+  padding-bottom: 84px;
+}
