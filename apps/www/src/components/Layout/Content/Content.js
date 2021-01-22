@@ -2,7 +2,7 @@ import { Sidebar, Tasks } from "@/components";
 
 const Content = () => {
   return (
-    <section>
+    <section className="content">
       <Sidebar />
       <Tasks />
     </section>
