@@ -30,7 +30,7 @@ const Login = () => {
     });
 
   return (
-    <main class="login_page">
+    <main className="login_page">
       <div className="login_page__frame">
         <div className="logn_page__logo"></div>
         <div className="login_page__content">
