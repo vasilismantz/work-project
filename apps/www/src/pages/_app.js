@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { withApollo } from "@/hocs";
 import { SnackbarProvider } from "notistack";
+import { ProjectsProvider, SelectedProjectProvider } from "@/context";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,7 +11,11 @@ function MyApp({ Component, pageProps }) {
       autoHideDuration={3000}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
-      <Component {...pageProps} />
+      <SelectedProjectProvider>
+        <ProjectsProvider>
+          <Component {...pageProps} />
+        </ProjectsProvider>
+      </SelectedProjectProvider>
     </SnackbarProvider>
   );
 }

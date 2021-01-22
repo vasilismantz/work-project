@@ -4,25 +4,28 @@ import {
   CalendarToday,
   DateRange,
 } from "@material-ui/icons";
-import { Projects } from "@/components";
+import { Projects, AddProject } from "@/components";
+import { useSelectedProjectValue } from "@/context";
 
 const Sidebar = () => {
+  const { setSelectedProject } = useSelectedProjectValue();
+
   return (
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
-        <li>
+        <li onClick={() => setSelectedProject("INBOX")}>
           <span>
             <Inbox />
           </span>
           <span>Inbox</span>
         </li>
-        <li>
+        <li onClick={() => setSelectedProject("TODAY")}>
           <span>
             <CalendarToday />
           </span>
           <span>Today</span>
         </li>
-        <li>
+        <li onClick={() => setSelectedProject("NEXT_7")}>
           <span>
             <DateRange />
           </span>
@@ -38,7 +41,7 @@ const Sidebar = () => {
       <ul className="sidebar__projects">
         <Projects />
       </ul>
-      Add Project Component Here!!
+      <AddProject />
     </div>
   );
 };
