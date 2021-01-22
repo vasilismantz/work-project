@@ -11,7 +11,11 @@ export {
   GET_USERS,
 } from "./queries/userQueries";
 
-export { GET_CATEGORY, GET_CATEGORIES } from "./queries/categoryQueries";
+export {
+  GET_CATEGORY,
+  GET_CATEGORIES,
+  GET_CATEGORY_BY_NAME,
+} from "./queries/categoryQueries";
 
 export { GET_TASK, GET_TASKS } from "./queries/taskQueries";
 
