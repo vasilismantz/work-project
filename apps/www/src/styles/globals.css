@@ -885,3 +885,111 @@ header {
   padding-top: 80px;
   padding-bottom: 84px;
 }
+
+.tasks h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 30px 20px 0;
+}
+
+.tasks .add-task {
+  margin-top: 20px;
+}
+
+.tasks__list li {
+  display: flex;
+  line-height: 18px;
+  color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  list-style-type: none;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tasks__list li .checkbox-holder {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 16px;
+}
+
+.tasks__list li .checkbox-holder .checkbox {
+  cursor: pointer;
+  border-color: gray;
+  color: #343434;
+  height: 16px;
+  width: 16px;
+  display: block;
+  border: 1px solid gray;
+  border-radius: 16px;
+}
+
+/* Add Project
+  =========================================== */
+.add-project {
+  padding-left: 13px;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+.add-project__input {
+  margin-bottom: 20px;
+}
+
+.add-project__name {
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: white !important;
+  border-radius: 3px;
+  height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.add-project__submit {
+  width: 100px;
+  background-color: #db4c3f;
+  color: #fff !important;
+  border: 1px solid transparent;
+  margin-right: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px !important;
+  line-height: 17px;
+  padding: 6px 12px 7px 12px;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-project__cancel {
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 2px 5px;
+}
+
+/* Add Task
+  =========================================== */
+.add-task {
+}
+
+.add-task__plus,
+.add-project__plus {
+  color: #dd4b39;
+  font-size: 18px;
+}
+
+.add-task__text,
+.add-project__text {
+  display: inline-block;
+  color: #545454;
+  font-size: 15px;
+  margin-left: 15px;
+}
