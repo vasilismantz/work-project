@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTasks } from "@/hooks";
 import { useSnackbar } from "notistack";
-import { Checkbox } from "@/components";
+import { Checkbox, AddTask } from "@/components";
 import { useSelectedProjectValue } from "@/context";
 
 const Tasks = () => {
@@ -22,7 +22,7 @@ const Tasks = () => {
 
   return (
     <div className="tasks" data-testid="tasks">
-      <h2 data-testid="project-name">{selectedProject}</h2>
+      <h2 data-testid="project-name">{selectedProject.name}</h2>
 
       <ul className="tasks__list">
         {tasks?.map(task => (
@@ -32,6 +32,7 @@ const Tasks = () => {
           </li>
         ))}
       </ul>
+      <AddTask />
     </div>
   );
 };
