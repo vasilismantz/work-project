@@ -996,7 +996,7 @@ header {
 }
 
 .add-task__overlay .add-task__main {
-  width: 90%;
+  width: 30%;
   overflow: visible;
   margin-bottom: 20px;
   margin-top: 55px;
@@ -1004,7 +1004,7 @@ header {
   background-color: white;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 30%;
   padding: 20px 30px;
   transform: translate(-50%, -50%);
 }
