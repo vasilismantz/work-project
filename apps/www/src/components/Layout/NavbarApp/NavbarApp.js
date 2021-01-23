@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { ClearAll, LocalPizza, Add } from "@material-ui/icons";
+import { AddTask } from "@/components";
 
 const NavbarApp = () => {
+  const [shouldShowMain, setShouldShowMain] = useState(false);
+  const [showQuickAddTask, setShowQuickAddTask] = useState(false);
+
   return (
     <header className="header" data-testid="header">
       <nav className="main-nav">
@@ -9,7 +14,12 @@ const NavbarApp = () => {
         </div>
         <div className="settings">
           <ul>
-            <li>
+            <li
+              onClick={() => {
+                setShowQuickAddTask(true);
+                setShouldShowMain(true);
+              }}
+            >
               <Add />
             </li>
             <li>
@@ -18,6 +28,12 @@ const NavbarApp = () => {
           </ul>
         </div>
       </nav>
+      <AddTask
+        showAddTaskMain={false}
+        shouldShowMain={shouldShowMain}
+        showQuickAddTask={showQuickAddTask}
+        setShowQuickAddTask={setShowQuickAddTask}
+      />
     </header>
   );
 };

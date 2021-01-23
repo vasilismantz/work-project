@@ -105,7 +105,11 @@ const AddTask = ({
           <button
             type="button"
             className="add-task__submit"
-            onClick={() => addTaskHandle()}
+            onClick={() =>
+              showQuickAddTask
+                ? addTask() && setShowQuickAddTask(false)
+                : addTaskHandle()
+            }
           >
             Add Task
           </button>
