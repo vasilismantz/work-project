@@ -14,6 +14,7 @@ export default gql`
     name: String!
     color: String!
     user: User!
+    tasks: [Task]!
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -38,6 +39,7 @@ export default gql`
     user(id: ID!): User!
     users: [User!]!
     category(id: ID!): Category!
+    categoryByName(name: String): Category
     categories: [Category!]!
     task(id: ID!): Task!
     tasks: [Task!]!
