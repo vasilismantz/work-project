@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { isEmpty } from "lodash";
 import { CircularProgress, NoSsr } from "@material-ui/core";
-
+import { useProjects } from "@/hooks";
 import { Center } from "@/components";
 import { userIsLoggedIn } from "@/hooks";
 
@@ -10,10 +10,12 @@ const withoutAuth = Component => props => {
   const isLoggedIn = userIsLoggedIn();
   const router = useRouter();
   const { redirect } = router.query;
+  const { setProjects } = useProjects();
 
   useEffect(() => {
     if (isLoggedIn) {
       const url = !isEmpty(redirect) ? redirect : "/";
+      setProjects([]);
       router.push(url);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
