@@ -1,10 +1,23 @@
 import { useState } from "react";
-import { ClearAll, LocalPizza, Add } from "@material-ui/icons";
+import { ClearAll, ExitToApp, Add } from "@material-ui/icons";
 import { AddTask } from "@/components";
+import { isLoggedInVar } from "@/lib/graphql/cache";
+import { useRouter } from "next/router";
+import { useSnackbar } from "notistack";
 
 const NavbarApp = () => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
+  const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    isLoggedInVar(false);
+    enqueueSnackbar("You have been logged out.", { variant: "success" });
+    router.push("/landingPage");
+  };
 
   return (
     <header className="header" data-testid="header">
@@ -22,8 +35,12 @@ const NavbarApp = () => {
             >
               <Add />
             </li>
-            <li>
-              <LocalPizza />
+            <li
+              onClick={() => {
+                logout();
+              }}
+            >
+              <ExitToApp />
             </li>
           </ul>
         </div>
