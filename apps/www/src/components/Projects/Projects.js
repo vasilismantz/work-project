@@ -20,10 +20,7 @@ const Projects = () => {
       onCompleted: data => {
         enqueueSnackbar("Project removed successfuly.", { variant: "success" });
         setSelectedProject("INBOX");
-        let newProjects = _.reject(projects, function (el) {
-          return el.id === data.removeCategory.id;
-        });
-        setProjects([...newProjects]);
+        setProjects([...projects]);
       },
       onError: error => enqueueSnackbar(error.message, { variant: "error" }),
     }
@@ -38,7 +35,7 @@ const Projects = () => {
       <li
         key={project.id}
         className="sidebar__project"
-        onClick={() => setSelectedProject(project.name)}
+        onClick={() => setSelectedProject(project)}
       >
         <span className="sidebar__dot">•</span>
         <span className="sidebar__project-name">{project.name}</span>

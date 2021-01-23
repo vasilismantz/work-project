@@ -13,19 +13,19 @@ const Sidebar = () => {
   return (
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
-        <li onClick={() => setSelectedProject("INBOX")}>
+        <li onClick={() => setSelectedProject({ name: "INBOX" })}>
           <span>
             <Inbox />
           </span>
           <span>Inbox</span>
         </li>
-        <li onClick={() => setSelectedProject("TODAY")}>
+        <li onClick={() => setSelectedProject({ name: "TODAY" })}>
           <span>
             <CalendarToday />
           </span>
           <span>Today</span>
         </li>
-        <li onClick={() => setSelectedProject("NEXT_7")}>
+        <li onClick={() => setSelectedProject({ name: "NEXT_7" })}>
           <span>
             <DateRange />
           </span>
