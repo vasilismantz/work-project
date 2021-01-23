@@ -23,6 +23,11 @@ const client = ({ initialState }) => {
   return new ApolloClient({
     link: authLink.concat(httpLink),
     cache: cache.restore(initialState || {}),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: "cache-and-network",
+      },
+    },
     // typeDefs,
     resolvers: {},
   });
