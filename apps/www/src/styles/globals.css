@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+}
+
+p {
+  margin: 16px 0px;
 }
 
 :root {
@@ -786,7 +790,8 @@ header {
   cursor: pointer;
   line-height: 1.5;
   font-size: 15px;
-  padding-left: 5px;
+  margin-bottom: 7px;
+  padding-left: 10px;
   padding-right: 0;
 }
 
@@ -977,7 +982,105 @@ header {
 
 /* Add Task
   =========================================== */
-.add-task {
+.add-task__overlay {
+  background: rgba(102, 102, 102, 0.5);
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  transition: opacity 0.2s ease-in;
+  height: calc(100vh);
+}
+
+.add-task__overlay .add-task__main {
+  width: 90%;
+  overflow: visible;
+  margin-bottom: 20px;
+  margin-top: 55px;
+  border-radius: 5px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 20px 30px;
+  transform: translate(-50%, -50%);
+}
+
+.add-task__overlay .add-task__main .header {
+  font-size: 13px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.add-task__overlay .add-task__cancel-x {
+  cursor: pointer;
+  color: gray;
+  float: right;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.add-task__main {
+  position: relative;
+}
+
+.add-task__project,
+.add-task__date {
+  cursor: pointer;
+  float: right;
+  color: gray;
+  margin: 20px 10px;
+}
+
+.add-task__project {
+  margin-right: 0;
+}
+
+.add-task__content {
+  width: 100%;
+  border: 1px solid #ddd;
+  background-color: white !important;
+  border-radius: 3px;
+  height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.add-task__cancel {
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 2px 5px;
+}
+
+.add-task__submit {
+  width: 90px;
+  background-color: #db4c3f;
+  color: #fff !important;
+  border: 1px solid transparent;
+  margin-right: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px !important;
+  line-height: 17px;
+  padding: 6px 12px 7px 12px;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-task__shallow,
+.add-project {
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .add-task__plus,
@@ -992,4 +1095,97 @@ header {
   color: #545454;
   font-size: 15px;
   margin-left: 15px;
+}
+
+/* Task Date
+  ============================================ */
+.task-date {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.1) 0px 4px 11px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 85px;
+  border-radius: 3px;
+  background-color: #fff;
+  width: 200px;
+  right: 0;
+}
+
+.task-date__list li {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 18px;
+  color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  list-style-type: none;
+  border-bottom: 1px solid #f0f0f0;
+  padding-left: 10px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.task-date__list li:hover {
+  background-color: #f9f9f9;
+}
+
+.task-date__list li div:nth-child(1) {
+  padding: 10px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.task-date__list li div:nth-child(1) span:first-of-type {
+  margin-right: 10px;
+}
+.task-date__list li div:nth-child(1) span:first-of-type svg {
+  fill: grey;
+}
+
+/* Project Overlay
+  ============================================ */
+.project-overlay {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.1) 0px 4px 11px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  top: 85px;
+  border-radius: 3px;
+  background-color: white;
+  width: 200px;
+  right: 0;
+}
+
+.project-overlay__list li {
+  list-style-type: none;
+  display: flex;
+  line-height: 18px;
+  color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  list-style-type: none;
+  border-bottom: 1px solid #f0f0f0;
+  padding-left: 10px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.project-overlay__list li:hover {
+  background-color: #f9f9f9;
+}
+
+.project-overlay__list li div:nth-child(1) {
+  width: 100%;
+  padding: 10px;
 }
