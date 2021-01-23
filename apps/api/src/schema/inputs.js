@@ -25,7 +25,7 @@ export default gql`
   input AddTaskInput {
     name: String!
     date: DateTime!
-    categoryId: ID!
+    categoryId: ID
   }
 
   input UpdateTaskInput {
