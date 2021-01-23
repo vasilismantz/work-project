@@ -5,7 +5,7 @@ import { ADD_TASK } from "@work-project/graphql";
 import { useSelectedProjectValue } from "@/context";
 import { useSnackbar } from "notistack";
 import { DateRange, ListAlt } from "@material-ui/icons";
-import { ProjectOverlay } from "@/components";
+import { ProjectOverlay, TaskDate } from "@/components";
 import useTasks from "../../hooks/useTasks";
 
 const AddTask = ({
@@ -17,7 +17,7 @@ const AddTask = ({
   const { enqueueSnackbar } = useSnackbar();
 
   const [task, setTask] = useState("");
-  const [taskDate, setTaskDate] = useState("");
+  const [taskDate, setTaskDate] = useState(moment());
   const [project, setProject] = useState("");
   const [showMain, setShowMain] = useState(shouldShowMain);
   const [showProjectOverlay, setShowProjectOverlay] = useState(false);
@@ -26,17 +26,13 @@ const AddTask = ({
   const { selectedProject } = useSelectedProjectValue();
   const { tasks, setTasks } = useTasks(selectedProject);
 
-  let collatedDate = moment();
-  console.log("project", project);
-  console.log("selectedProject", selectedProject);
-
   const projectId = project || selectedProject.id || null;
 
   const [addTask, { data, error }] = useMutation(ADD_TASK, {
     variables: {
       addTaskInput: {
         name: task,
-        date: collatedDate,
+        date: taskDate,
         categoryId: projectId,
       },
       withCategory: false,
@@ -52,11 +48,6 @@ const AddTask = ({
   });
 
   const addTaskHandle = () => {
-    // if (projectId === "TODAY") {
-    //   collatedDate = moment();
-    // } else if (projectId === "NEXT_7") {
-    //   collatedDate = moment().add(7, "days");
-    // }
     task && addTask();
   };
 
@@ -100,7 +91,11 @@ const AddTask = ({
             showProjectOverlay={showProjectOverlay}
             setShowProjectOverlay={setShowProjectOverlay}
           />
-          <p>TaskDate here</p>
+          <TaskDate
+            setTaskDate={setTaskDate}
+            showTaskDate={showTaskDate}
+            setShowTaskDate={setShowTaskDate}
+          />
           <input
             className="add-task__content"
             type="text"

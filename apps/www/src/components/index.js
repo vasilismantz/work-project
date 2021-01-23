@@ -14,6 +14,7 @@ export { default as Projects } from "./Projects";
 export { default as AddProject } from "./AddProject";
 export { default as AddTask } from "./AddTask";
 export { default as ProjectOverlay } from "./ProjectOverlay";
+export { default as TaskDate } from "./TaskDate";
 export { default as Checkbox } from "./Checkbox";
 export { default as Button } from "./Button";
 export { default as Center } from "./Center";
