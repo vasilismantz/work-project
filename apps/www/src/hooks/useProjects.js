@@ -7,9 +7,9 @@ const useProjects = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [projects, setProjects] = useState([]);
 
-  const { data, error, refetch } = useQuery(GET_CATEGORIES, {
+  const { refetch } = useQuery(GET_CATEGORIES, {
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
-    onCompleted: () => {
+    onCompleted: data => {
       setProjects(data.categories);
     },
   });
