@@ -27,16 +27,3 @@ export const GET_CATEGORIES = gql`
   ${categoryFields}
   ${userFields}
 `;
-
-export const GET_CATEGORY_BY_NAME = gql`
-  query GET_CATEGORY_BY_NAME($name: String, $withTasks: Boolean = false) {
-    categoryByName(name: $name) {
-      ...categoryFields
-      tasks @include(if: $withTasks) {
-        ...taskFields
-      }
-    }
-  }
-  ${categoryFields}
-  ${taskFields}
-`;
