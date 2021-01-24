@@ -75,11 +75,24 @@ export default {
 
     return task;
   },
-  tasks: (_, __, ctx) => {
+  tasks: (_, { isArchived, categoryId }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    return ctx.models.Task.find({ user: ctx.user.id });
+    let findTask = ctx.models.Task.find({
+      user: ctx.user.id,
+      isArchived,
+    });
+
+    if (categoryId) {
+      findTask = ctx.models.Task.find({
+        user: ctx.user.id,
+        isArchived,
+        category: categoryId,
+      });
+    }
+
+    return findTask;
   },
 };

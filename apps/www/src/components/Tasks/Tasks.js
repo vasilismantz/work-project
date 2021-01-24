@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
 import { useTasks } from "@/hooks";
 import { useSnackbar } from "notistack";
+import { useMutation } from "@apollo/client";
+import { UPDATE_TASK } from "@work-project/graphql";
 import { Checkbox, AddTask } from "@/components";
 import { useSelectedProjectValue } from "@/context";
 
@@ -9,12 +10,20 @@ const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { tasks, setTasks } = useTasks(selectedProject);
 
-  const handleArchive = ({ id }) => {
+  const [archiveTask] = useMutation(UPDATE_TASK, {
+    onError: error => enqueueSnackbar(error.message, { variant: "error" }),
+    onCompleted: () => {
+      enqueueSnackbar("The Task has been updated.", { variant: "success" });
+      setTasks([...tasks]);
+    },
+  });
+
+  const handleArchive = id => {
     archiveTask({
       variables: {
+        id: id,
         updateTaskInput: {
-          id,
-          archived,
+          isArchived: true,
         },
       },
     });
@@ -27,7 +36,7 @@ const Tasks = () => {
       <ul className="tasks__list">
         {tasks?.map(task => (
           <li key={`${task.id}`}>
-            <Checkbox id={task.id} onClick={handleArchive} />
+            <Checkbox id={task.id} onClick={() => handleArchive(task.id)} />
             <span>{task.name}</span>
           </li>
         ))}

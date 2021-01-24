@@ -2,7 +2,6 @@ import { print } from "graphql";
 import { gql } from "apollo-server";
 import {
   GET_CATEGORY,
-  GET_CATEGORY_BY_NAME,
   GET_CATEGORIES,
   ADD_CATEGORY,
   UPDATE_CATEGORY,
@@ -11,7 +10,6 @@ import {
 
 const query = gql`
   ${GET_CATEGORY}
-  ${GET_CATEGORY_BY_NAME}
   ${GET_CATEGORIES}
   ${ADD_CATEGORY}
   ${UPDATE_CATEGORY}

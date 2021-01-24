@@ -1,36 +1,20 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_CATEGORY_BY_NAME, GET_TASKS } from "@work-project/graphql";
+import { GET_TASKS } from "@work-project/graphql";
 import { useSnackbar } from "notistack";
 
 const useTasks = selectedProject => {
   const { enqueueSnackbar } = useSnackbar();
   const [tasks, setTasks] = useState([]);
-  // const [archivedTasks, setArchivedTasks] = useState([]);
 
-  let variables = {
-    withTasks: true,
-    name: selectedProject.name,
-  };
-
-  let query = GET_CATEGORY_BY_NAME;
-
-  let helper = () => {
-    setTasks(data.categoryByName?.tasks);
-  };
-
-  if (selectedProject.name === "INBOX") {
-    query = GET_TASKS;
-    variables = {};
-    helper = () => {
-      setTasks(data.tasks);
-    };
-  }
-
-  const { data, error, refetch } = useQuery(query, {
-    variables,
+  const { data, error, refetch } = useQuery(GET_TASKS, {
+    variables: {
+      isArchived: false,
+      withTasks: true,
+      categoryId: selectedProject.id,
+    },
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
-    onCompleted: () => helper(),
+    onCompleted: () => setTasks(data.tasks),
   });
 
   useEffect(() => {

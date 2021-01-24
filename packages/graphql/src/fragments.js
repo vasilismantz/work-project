@@ -21,5 +21,6 @@ export const taskFields = gql`
     id
     name
     date
+    isArchived
   }
 `;
