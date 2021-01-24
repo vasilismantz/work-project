@@ -10,6 +10,7 @@ export default {
     return ctx.models.Task.create({
       name: args.input.name,
       date: args.input.date,
+      isArchived: args.input.isArchived,
       category: args.input.categoryId,
       user: ctx.user.id,
     });

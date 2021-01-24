@@ -33,6 +33,7 @@ const AddTask = ({
       addTaskInput: {
         name: task,
         date: taskDate,
+        isArchived: false,
         categoryId: projectId,
       },
       withCategory: false,
