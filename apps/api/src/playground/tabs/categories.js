@@ -19,6 +19,7 @@ const query = gql`
 const variables = {
   id: "1",
   withUser: true,
+  name: "Groceries",
   addCategoryInput: {
     name: "Groceries",
     color: "Green",

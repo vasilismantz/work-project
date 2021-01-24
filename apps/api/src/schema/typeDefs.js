@@ -14,6 +14,7 @@ export default gql`
     name: String!
     color: String!
     user: User!
+    tasks: [Task]!
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -22,6 +23,7 @@ export default gql`
     id: ID!
     name: String!
     date: DateTime!
+    isArchived: Boolean!
     user: User!
     category: Category!
     createdAt: DateTime!
@@ -38,9 +40,10 @@ export default gql`
     user(id: ID!): User!
     users: [User!]!
     category(id: ID!): Category!
+    categoryByName(name: String): Category
     categories: [Category!]!
     task(id: ID!): Task!
-    tasks: [Task!]!
+    tasks(isArchived: Boolean!, categoryId: ID): [Task!]!
   }
 
   type Mutation {

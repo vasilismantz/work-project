@@ -25,12 +25,14 @@ export default gql`
   input AddTaskInput {
     name: String!
     date: DateTime!
-    categoryId: ID!
+    isArchived: Boolean!
+    categoryId: ID
   }
 
   input UpdateTaskInput {
     name: String
     date: DateTime
+    isArchived: Boolean
     categoryId: ID
   }
 `;

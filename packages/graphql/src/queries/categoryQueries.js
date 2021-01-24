@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-import { categoryFields, userFields } from "../fragments";
+import { categoryFields, userFields, taskFields } from "../fragments";
 
 export const GET_CATEGORY = gql`
   query GET_CATEGORY($id: ID!, $withUser: Boolean = false) {

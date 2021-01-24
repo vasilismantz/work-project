@@ -18,10 +18,14 @@ const taskSchema = new Schema(
       ref: "User",
       required: true,
     },
+    isArchived: {
+      type: Boolean,
+      required: true,
+    },
     category: {
       type: Schema.Types.ObjectId,
       ref: "Category",
-      required: true,
+      // required: true,
     },
   },
   { timestamps: true }

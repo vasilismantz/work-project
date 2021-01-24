@@ -24,8 +24,13 @@ export const GET_TASK = gql`
 `;
 
 export const GET_TASKS = gql`
-  query GET_TASKS($withUser: Boolean = false, $withCategory: Boolean = false) {
-    tasks {
+  query GET_TASKS(
+    $isArchived: Boolean!
+    $categoryId: ID
+    $withUser: Boolean = false
+    $withCategory: Boolean = false
+  ) {
+    tasks(isArchived: $isArchived, categoryId: $categoryId) {
       ...taskFields
       user @include(if: $withUser) {
         ...userFields
