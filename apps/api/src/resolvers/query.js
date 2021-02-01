@@ -1,6 +1,5 @@
 import { AuthenticationError } from "apollo-server";
-import { compare } from "bcryptjs";
-import { check } from "prettier";
+import moment from "moment";
 import { compareUserIds } from "../utils";
 
 export default {
@@ -75,21 +74,30 @@ export default {
 
     return task;
   },
-  tasks: (_, { isArchived, categoryId }, ctx) => {
+  tasks: (_, { isArchived, categoryId, date }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    let findTask = ctx.models.Task.find({
-      user: ctx.user.id,
-      isArchived,
-    });
+    let findTask;
 
     if (categoryId) {
       findTask = ctx.models.Task.find({
         user: ctx.user.id,
         isArchived,
         category: categoryId,
+      });
+    } else if (date) {
+      console.log("hey date", date);
+      findTask = ctx.models.Task.find({
+        user: ctx.user.id,
+        isArchived,
+        date: { $gt: moment().startOf("day"), $lte: date },
+      });
+    } else {
+      findTask = ctx.models.Task.find({
+        user: ctx.user.id,
+        isArchived,
       });
     }
 
