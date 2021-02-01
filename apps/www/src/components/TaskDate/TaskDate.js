@@ -1,7 +1,7 @@
 import moment from "moment";
 import { FlightTakeoff, WbSunny, NextWeek } from "@material-ui/icons";
 
-const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) => 
+const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
   showTaskDate && (
     <div className="task-date">
       <ul className="task-date__list">
@@ -19,7 +19,7 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
         <li
           onClick={() => {
             setShowTaskDate(false);
-            setTaskDate(moment().add(1, "day"));
+            setTaskDate(moment().add(1, "day").startOf("day"));
           }}
         >
           <span>
@@ -30,7 +30,7 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
         <li
           onClick={() => {
             setShowTaskDate(false);
-            setTaskDate(moment().add(7, "days"));
+            setTaskDate(moment().add(1, "weeks").startOf("isoWeek"));
           }}
         >
           <span>
@@ -41,6 +41,5 @@ const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
       </ul>
     </div>
   );
-
 
 export default TaskDate;

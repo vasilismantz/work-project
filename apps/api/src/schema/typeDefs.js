@@ -43,7 +43,7 @@ export default gql`
     categoryByName(name: String): Category
     categories: [Category!]!
     task(id: ID!): Task!
-    tasks(isArchived: Boolean!, categoryId: ID): [Task!]!
+    tasks(isArchived: Boolean!, categoryId: ID, date: DateTime): [Task!]!
   }
 
   type Mutation {
