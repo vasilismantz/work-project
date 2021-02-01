@@ -88,7 +88,6 @@ export default {
         category: categoryId,
       });
     } else if (date) {
-      console.log("hey date", date);
       findTask = ctx.models.Task.find({
         user: ctx.user.id,
         isArchived,
