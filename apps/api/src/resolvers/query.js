@@ -24,42 +24,42 @@ export default {
 
     return ctx.models.User.find({ user: ctx.user.id });
   },
-  category: async (_, { id }, ctx) => {
+  project: async (_, { id }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    const category = await ctx.models.Category.findOne({ _id: id });
+    const project = await ctx.models.Project.findOne({ _id: id });
 
-    if (category) {
-      compareUserIds(category.user, ctx.user.id);
+    if (project) {
+      compareUserIds(project.user, ctx.user.id);
     }
 
-    return category;
+    return project;
   },
-  categoryByName: async (_, { name }, ctx) => {
+  projectByName: async (_, { name }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    const categories = await ctx.models.Category.find({ name });
+    const projects = await ctx.models.Project.find({ name });
 
-    let correctCategory = null;
+    let correctProject = null;
 
-    categories.map(category => {
-      if (category.user == ctx.user.id) {
-        correctCategory = category;
+    projects.map(project => {
+      if (project.user == ctx.user.id) {
+        correctProject = project;
       }
     });
 
-    return correctCategory;
+    return correctProject;
   },
-  categories: (_, __, ctx) => {
+  projects: (_, __, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
-    return ctx.models.Category.find({ user: ctx.user.id });
+    return ctx.models.Project.find({ user: ctx.user.id });
   },
   task: async (_, { id }, ctx) => {
     if (!ctx.user) {
@@ -74,18 +74,18 @@ export default {
 
     return task;
   },
-  tasks: (_, { isArchived, categoryId, date }, ctx) => {
+  tasks: (_, { isArchived, projectId, date }, ctx) => {
     if (!ctx.user) {
       throw new AuthenticationError("You are not logged in.");
     }
 
     let findTask;
 
-    if (categoryId) {
+    if (projectId) {
       findTask = ctx.models.Task.find({
         user: ctx.user.id,
         isArchived,
-        category: categoryId,
+        project: projectId,
       });
     } else if (date) {
       findTask = ctx.models.Task.find({

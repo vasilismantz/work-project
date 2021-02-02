@@ -1,9 +1,9 @@
 import user from "./user";
-import category from "./category";
+import project from "./project";
 import task from "./task";
 
 export default {
   ...user,
-  ...category,
+  ...project,
   ...task,
 };

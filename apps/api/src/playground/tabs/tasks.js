@@ -19,16 +19,16 @@ const query = gql`
 const variables = {
   id: "1",
   withUser: true,
-  withCategory: true,
+  withProject: true,
   addTaskInput: {
     name: "Throw trash",
     date: "2020-10-09T00:00:00Z",
-    categoryId: "1",
+    projectId: "1",
   },
   updateTaskInput: {
     name: "Clean dishes",
     date: "2020-10-09T23:00:00Z",
-    categoryId: "1",
+    projectId: "1",
   },
 };
 

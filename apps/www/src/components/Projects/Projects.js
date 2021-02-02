@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { lodash } from "lodash";
-import { REMOVE_CATEGORY } from "@work-project/graphql";
+import { REMOVE_PROJECT } from "@work-project/graphql";
 import { useProjectsValue, useSelectedProjectValue } from "@/context";
 import { Delete } from "@material-ui/icons";
 import { useSnackbar } from "notistack";
@@ -15,7 +15,7 @@ const Projects = () => {
   const { setSelectedProject } = useSelectedProjectValue();
 
   const [removeProject, { data, loading: removeLoading }] = useMutation(
-    REMOVE_CATEGORY,
+    REMOVE_PROJECT,
     {
       onCompleted: data => {
         enqueueSnackbar("Project removed successfuly.", { variant: "success" });
