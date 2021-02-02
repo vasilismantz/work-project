@@ -8,9 +8,9 @@ import playground from "./playground";
 import connect from "./lib/mongoose";
 import {
   User,
-  Category,
   userLoader,
-  categoryLoader,
+  Project,
+  projectLoader,
   Task,
   taskLoader,
 } from "./models";
@@ -43,8 +43,8 @@ const server = new ApolloServer({
 
     return {
       user,
-      models: { User, Category, Task },
-      loaders: { userLoader, categoryLoader, taskLoader },
+      models: { User, Project, Task },
+      loaders: { userLoader, projectLoader, taskLoader },
       req,
       res,
     };

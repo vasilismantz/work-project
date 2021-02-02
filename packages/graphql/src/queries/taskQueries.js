@@ -1,47 +1,47 @@
 import gql from "graphql-tag";
 
-import { taskFields, userFields, categoryFields } from "../fragments";
+import { taskFields, userFields, projectFields } from "../fragments";
 
 export const GET_TASK = gql`
   query GET_TASK(
     $id: ID!
     $withUser: Boolean = false
-    $withCategory: Boolean = false
+    $withProject: Boolean = false
   ) {
     task(id: $id) {
       ...taskFields
       user @include(if: $withUser) {
         ...userFields
       }
-      category @include(if: $withCategory) {
-        ...categoryFields
+      project @include(if: $withProject) {
+        ...projectFields
       }
     }
   }
   ${taskFields}
   ${userFields}
-  ${categoryFields}
+  ${projectFields}
 `;
 
 export const GET_TASKS = gql`
   query GET_TASKS(
     $isArchived: Boolean!
-    $categoryId: ID
+    $projectId: ID
     $date: DateTime
     $withUser: Boolean = false
-    $withCategory: Boolean = false
+    $withProject: Boolean = false
   ) {
-    tasks(isArchived: $isArchived, categoryId: $categoryId, date: $date) {
+    tasks(isArchived: $isArchived, projectId: $projectId, date: $date) {
       ...taskFields
       user @include(if: $withUser) {
         ...userFields
       }
-      category @include(if: $withCategory) {
-        ...categoryFields
+      project @include(if: $withProject) {
+        ...projectFields
       }
     }
   }
   ${taskFields}
   ${userFields}
-  ${categoryFields}
+  ${projectFields}
 `;

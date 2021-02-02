@@ -22,10 +22,9 @@ const taskSchema = new Schema(
       type: Boolean,
       required: true,
     },
-    category: {
+    project: {
       type: Schema.Types.ObjectId,
-      ref: "Category",
-      // required: true,
+      ref: "Project",
     },
   },
   { timestamps: true }

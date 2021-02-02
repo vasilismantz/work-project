@@ -12,12 +12,12 @@ export default gql`
     password: String!
   }
 
-  input AddCategoryInput {
+  input AddProjectInput {
     name: String!
     color: String!
   }
 
-  input UpdateCategoryInput {
+  input UpdateProjectInput {
     name: String
     color: String
   }
@@ -26,13 +26,13 @@ export default gql`
     name: String!
     date: DateTime!
     isArchived: Boolean!
-    categoryId: ID
+    projectId: ID
   }
 
   input UpdateTaskInput {
     name: String
     date: DateTime
     isArchived: Boolean
-    categoryId: ID
+    projectId: ID
   }
 `;
