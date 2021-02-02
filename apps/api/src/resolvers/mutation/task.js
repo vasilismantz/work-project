@@ -7,11 +7,13 @@ export default {
       throw new AuthenticationError("You are not logged in.");
     }
 
+    console.log(args.input.projectId);
+
     return ctx.models.Task.create({
       name: args.input.name,
       date: args.input.date,
       isArchived: args.input.isArchived,
-      category: args.input.categoryId,
+      project: args.input.projectId,
       user: ctx.user.id,
     });
   },

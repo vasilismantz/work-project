@@ -1,7 +1,7 @@
 import DataLoader from "dataloader";
 import { models, model, Schema } from "mongoose";
 
-const categorySchema = new Schema(
+const projectSchema = new Schema(
   {
     name: {
       type: String,
@@ -22,8 +22,8 @@ const categorySchema = new Schema(
   { timestamps: true }
 );
 
-const Category = models.Category || model("Category", categorySchema);
-export const categoryLoader = new DataLoader(categoryIds =>
-  Category.find({ _id: { $in: cateogoryIds } }).execute()
+const Project = models.Project || model("Project", projectSchema);
+export const projectLoader = new DataLoader(projectIds =>
+  Project.find({ _id: { $in: projectIds } }).execute()
 );
-export default Category;
+export default Project;

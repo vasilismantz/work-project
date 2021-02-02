@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useProjectsValue } from "@/context";
 import { useMutation } from "@apollo/client";
-import { ADD_CATEGORY } from "@work-project/graphql";
+import { ADD_PROJECT } from "@work-project/graphql";
 import { useSnackbar } from "notistack";
 
 const AddProject = () => {
@@ -11,9 +11,9 @@ const AddProject = () => {
   const [projectName, setProjectName] = useState("");
   const { projects, setProjects } = useProjectsValue();
 
-  const [addCategory, { data }] = useMutation(ADD_CATEGORY, {
+  const [addProject, { data }] = useMutation(ADD_PROJECT, {
     variables: {
-      addCategoryInput: {
+      addProjectInput: {
         name: projectName,
         color: "white",
       },
@@ -21,7 +21,7 @@ const AddProject = () => {
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
     onCompleted: data => {
       enqueueSnackbar("Project has been added.", { variant: "success" });
-      setProjects([...projects, data.addCategory]);
+      setProjects([...projects, data.addProject]);
       setProjectName("");
       setShow(false);
     },
@@ -41,7 +41,7 @@ const AddProject = () => {
           <button
             className="add-project__submit"
             type="button"
-            onClick={() => addCategory()}
+            onClick={() => addProject()}
           >
             Add Project
           </button>

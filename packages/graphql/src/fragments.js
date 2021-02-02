@@ -8,8 +8,8 @@ export const userFields = gql`
   }
 `;
 
-export const categoryFields = gql`
-  fragment categoryFields on Category {
+export const projectFields = gql`
+  fragment projectFields on Project {
     id
     name
     color

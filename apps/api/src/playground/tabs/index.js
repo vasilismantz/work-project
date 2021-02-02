@@ -1,5 +1,5 @@
 import users from "./users";
-import categories from "./categories";
+import projects from "./projects";
 import tasks from "./tasks";
 
-export default [users, categories, tasks];
+export default [users, projects, tasks];

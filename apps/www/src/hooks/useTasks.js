@@ -26,7 +26,7 @@ const useTasks = selectedProject => {
     variables = {
       isArchived: false,
       withTasks: true,
-      categoryId: selectedProject.id,
+      projectId: selectedProject.id,
     };
   }
   const { refetch } = useQuery(GET_TASKS, {

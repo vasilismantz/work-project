@@ -28,15 +28,17 @@ const AddTask = ({
 
   const projectId = project || selectedProject.id || null;
 
+  console.log(projectId)
+
   const [addTask, { data, error }] = useMutation(ADD_TASK, {
     variables: {
       addTaskInput: {
         name: task,
         date: taskDate,
         isArchived: false,
-        categoryId: projectId,
+        projectId: projectId,
       },
-      withCategory: false,
+      withProject: false,
     },
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
     onCompleted: data => {

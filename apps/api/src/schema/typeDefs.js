@@ -9,7 +9,7 @@ export default gql`
     updatedAt: DateTime!
   }
 
-  type Category implements Node {
+  type Project implements Node {
     id: ID!
     name: String!
     color: String!
@@ -25,7 +25,7 @@ export default gql`
     date: DateTime!
     isArchived: Boolean!
     user: User!
-    category: Category!
+    project: Project!
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -39,19 +39,19 @@ export default gql`
     me: User!
     user(id: ID!): User!
     users: [User!]!
-    category(id: ID!): Category!
-    categoryByName(name: String): Category
-    categories: [Category!]!
+    project(id: ID!): Project!
+    projectByName(name: String): Project
+    projects: [Project!]!
     task(id: ID!): Task!
-    tasks(isArchived: Boolean!, categoryId: ID, date: DateTime): [Task!]!
+    tasks(isArchived: Boolean!, projectId: ID, date: DateTime): [Task!]!
   }
 
   type Mutation {
     register(input: AddUserInput!): AuthPayload!
     login(input: LoginUserInput!): AuthPayload!
-    addCategory(input: AddCategoryInput!): Category!
-    updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
-    removeCategory(id: ID!): Category!
+    addProject(input: AddProjectInput!): Project!
+    updateProject(id: ID!, input: UpdateProjectInput!): Project!
+    removeProject(id: ID!): Project!
     addTask(input: AddTaskInput!): Task!
     updateTask(id: ID!, input: UpdateTaskInput!): Task!
     removeTask(id: ID!): Task!
