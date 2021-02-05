@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue();
+  const [showProjects, setShowProjects] = useState(true);
   const [active, setActive] = useState("inbox");
 
   return (
@@ -52,15 +53,18 @@ const Sidebar = () => {
           <span>Next 7 days</span>
         </li>
       </ul>
-      <div className="sidebar__middle">
+      <div
+        className="sidebar__middle"
+        onClick={() => setShowProjects(!showProjects)}
+      >
         <span>
-          <KeyboardArrowDown />
+          <KeyboardArrowDown
+            className={!showProjects ? "hidden-projects" : undefined}
+          />
         </span>
         <h2>Projects</h2>
       </div>
-      <ul className="sidebar__projects">
-        <Projects />
-      </ul>
+      <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
       <AddProject />
     </div>
   );
