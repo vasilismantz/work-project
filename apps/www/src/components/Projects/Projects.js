@@ -8,11 +8,11 @@ import { useSnackbar } from "notistack";
 
 const Projects = () => {
   const { enqueueSnackbar } = useSnackbar();
-
   const [showConfirm, setShowConfirm] = useState(false);
   const { projects, setProjects } = useProjectsValue();
 
-  const { setSelectedProject } = useSelectedProjectValue();
+  const { selectedProject, setSelectedProject } = useSelectedProjectValue();
+  const [active, setActive] = useState(selectedProject.id);
 
   const [removeProject, { data, loading: removeLoading }] = useMutation(
     REMOVE_PROJECT,
@@ -34,8 +34,13 @@ const Projects = () => {
     return (
       <li
         key={project.id}
-        className="sidebar__project"
-        onClick={() => setSelectedProject(project)}
+        onClick={() => {
+          setActive(project.id);
+          setSelectedProject(project);
+        }}
+        className={
+          active === project.id ? "sidebar__project active" : "sidebar__project"
+        }
       >
         <span className="sidebar__dot">•</span>
         <span className="sidebar__project-name">{project.name}</span>
