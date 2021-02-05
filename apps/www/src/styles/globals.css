@@ -710,7 +710,7 @@ header {
   color: #9d9d9d;
 }
 
-.sidebar__project .active {
+.sidebar__project.active {
   font-weight: bold;
   background-color: white;
 }
@@ -793,6 +793,7 @@ header {
   margin-bottom: 7px;
   padding-left: 10px;
   padding-right: 0;
+  padding-top: 8px;
 }
 
 .sidebar__generic > span:first-of-type {
