@@ -9,9 +9,9 @@ import { CircularProgress, NoSsr } from "@material-ui/core";
 const Tasks = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { selectedProject } = useSelectedProjectValue();
-  const { tasks, setTasks } = useTasks(selectedProject);
+  const { tasks, setTasks, loading } = useTasks(selectedProject);
 
-  const [archiveTask, { loading }] = useMutation(UPDATE_TASK, {
+  const [archiveTask] = useMutation(UPDATE_TASK, {
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
     onCompleted: () => {
       enqueueSnackbar("The Task has been updated.", { variant: "success" });

@@ -29,7 +29,7 @@ const useTasks = selectedProject => {
       projectId: selectedProject.id,
     };
   }
-  const { refetch } = useQuery(GET_TASKS, {
+  const { loading, refetch } = useQuery(GET_TASKS, {
     variables: variables,
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
     onCompleted: data => setTasks(data.tasks),
@@ -39,7 +39,7 @@ const useTasks = selectedProject => {
     refetch();
   }, [tasks]);
 
-  return { tasks, setTasks };
+  return { tasks, setTasks, loading };
 };
 
 export default useTasks;
