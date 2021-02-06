@@ -5,6 +5,7 @@ import { UPDATE_TASK } from "@work-project/graphql";
 import { Checkbox, AddTask, Center } from "@/components";
 import { useSelectedProjectValue } from "@/context";
 import { CircularProgress, NoSsr } from "@material-ui/core";
+import moment from "moment";
 
 const Tasks = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -40,6 +41,9 @@ const Tasks = () => {
             <li key={`${task.id}`}>
               <Checkbox id={task.id} onClick={() => handleArchive(task.id)} />
               <span>{task.name}</span>
+              <span className="task__date">
+                {moment(task.date).format("Do MMM HH:mm")}
+              </span>
             </li>
           ))}
         </ul>

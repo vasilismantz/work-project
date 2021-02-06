@@ -28,8 +28,6 @@ const AddTask = ({
 
   const projectId = project || selectedProject.id || null;
 
-  console.log(projectId)
-
   const [addTask, { data, error }] = useMutation(ADD_TASK, {
     variables: {
       addTaskInput: {
@@ -95,6 +93,7 @@ const AddTask = ({
             setShowProjectOverlay={setShowProjectOverlay}
           />
           <TaskDate
+            taskDate={taskDate}
             setTaskDate={setTaskDate}
             showTaskDate={showTaskDate}
             setShowTaskDate={setShowTaskDate}
@@ -129,13 +128,19 @@ const AddTask = ({
           )}
           <span
             className="add-task__project"
-            onClick={() => setShowProjectOverlay(!showProjectOverlay)}
+            onClick={() => {
+              setShowTaskDate(false);
+              setShowProjectOverlay(!showProjectOverlay);
+            }}
           >
             <ListAlt />
           </span>
           <span
             className="add-task__date"
-            onClick={() => setShowTaskDate(!showTaskDate)}
+            onClick={() => {
+              setShowProjectOverlay(false);
+              setShowTaskDate(!showTaskDate);
+            }}
           >
             <DateRange />
           </span>
