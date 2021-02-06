@@ -2,15 +2,16 @@ import { useTasks } from "@/hooks";
 import { useSnackbar } from "notistack";
 import { useMutation } from "@apollo/client";
 import { UPDATE_TASK } from "@work-project/graphql";
-import { Checkbox, AddTask } from "@/components";
+import { Checkbox, AddTask, Center } from "@/components";
 import { useSelectedProjectValue } from "@/context";
+import { CircularProgress, NoSsr } from "@material-ui/core";
 
 const Tasks = () => {
   const { enqueueSnackbar } = useSnackbar();
   const { selectedProject } = useSelectedProjectValue();
   const { tasks, setTasks } = useTasks(selectedProject);
 
-  const [archiveTask] = useMutation(UPDATE_TASK, {
+  const [archiveTask, { loading }] = useMutation(UPDATE_TASK, {
     onError: error => enqueueSnackbar(error.message, { variant: "error" }),
     onCompleted: () => {
       enqueueSnackbar("The Task has been updated.", { variant: "success" });
@@ -29,20 +30,42 @@ const Tasks = () => {
     });
   };
 
-  return (
-    <div className="tasks" data-testid="tasks">
-      <h2 data-testid="project-name">{selectedProject.name}</h2>
+  if (!loading) {
+    return (
+      <div className="tasks" data-testid="tasks">
+        <h2 data-testid="project-name">{selectedProject.name}</h2>
 
-      <ul className="tasks__list">
-        {tasks?.map(task => (
-          <li key={`${task.id}`}>
-            <Checkbox id={task.id} onClick={() => handleArchive(task.id)} />
-            <span>{task.name}</span>
-          </li>
-        ))}
-      </ul>
-      <AddTask />
-    </div>
+        <ul className="tasks__list">
+          {tasks?.map(task => (
+            <li key={`${task.id}`}>
+              <Checkbox id={task.id} onClick={() => handleArchive(task.id)} />
+              <span>{task.name}</span>
+            </li>
+          ))}
+        </ul>
+        <AddTask />
+      </div>
+    );
+  }
+
+  return (
+    <NoSsr>
+      <div
+        className="tasks"
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress
+          style={{
+            position: "absolute",
+            top: "25%",
+          }}
+        />
+      </div>
+    </NoSsr>
   );
 };
 
