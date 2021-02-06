@@ -932,6 +932,13 @@ header {
   border-radius: 16px;
 }
 
+.task__date {
+  margin-left: auto;
+  order: 2;
+  color: grey;
+  font-size: 0.9em;
+}
+
 /* Add Project
   =========================================== */
 .add-project {
@@ -1109,8 +1116,8 @@ header {
   top: 85px;
   border-radius: 3px;
   background-color: #fff;
-  width: 200px;
-  right: 0;
+  width: 8em;
+  right: 2.4em;
 }
 
 .task-date__list li {
